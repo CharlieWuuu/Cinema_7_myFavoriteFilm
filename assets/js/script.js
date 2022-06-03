@@ -1,14 +1,14 @@
-// 函式：載入時，顯示已選片單數量
-function showFilmAmount() {
-  document.getElementById('film_amount').innerText = filmFavoriteData.length;
-}
-showFilmAmount();
-
 // 目的：渲染有加入最愛的資料
 // 變數：取得本機儲存空間
 const localData = JSON.parse(localStorage.getItem('片單'))
   ? JSON.parse(localStorage.getItem('片單'))
   : [];
+
+// 函式：載入時，顯示已選片單數量
+function showFilmAmount() {
+  document.getElementById('film_amount').innerText = localData.length;
+}
+showFilmAmount();
 
 // 變數：最終渲染用的陣列資料
 const favArrayData = [];
