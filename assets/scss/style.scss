@@ -1,0 +1,117 @@
+*{
+	box-shadow: inset 0 0 0 0.7px black;
+	border-collapse: collapse;
+	margin: 10px;
+	padding: 10px;
+}
+
+main{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.fav__title{
+	padding: 0;
+}
+
+.favSelector__container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0;
+}
+
+.nav{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.favTable__wrapper{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 63vw;
+	overflow: hidden;
+}
+
+.favTableSlide__container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transform: translateX(35vw);
+	transition-duration: 1s;
+}
+
+.favTable__container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding: 0px;
+	margin: 0px;
+	&#favTable__container1{
+		margin-right: 7vw
+	}
+}
+
+table{
+	max-width: 1200px;
+	table-layout: fixed;
+  width: 100px;
+	height: 100px;
+	padding: 0px;
+	margin: 0px;
+}
+
+td{
+	table-layout: fixed;
+	width: 12vw;
+	height: 12vh;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	padding: 0;
+}
+
+.favTable__header{
+	table-layout: fixed;
+	height: 4vh;
+	padding: 0;
+	text-align: center;
+}
+
+.favTable__time{
+	table-layout: fixed;
+	width: 3vw;
+	padding: 0;
+	text-align: center;
+}
+
+.film__container{
+	position: relative;
+	width: 100%;
+	padding: 0px;
+	margin: 0px;
+	border: 1px solid black;
+}
+
+.film{
+	position: absolute;
+	padding: 0px;
+	margin: 0px;
+
+	background-color: rgba(255, 255, 203, 0.801);
+	width: 6vw;
+	height: 8vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.film span,p{
+	padding: 2px;
+	margin: 5px;
+	font-size: 0.5rem;
+}
