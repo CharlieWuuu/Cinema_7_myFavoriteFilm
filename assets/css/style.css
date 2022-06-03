@@ -6,6 +6,10 @@
   padding: 10px;
 }
 
+header {
+  text-align: center;
+}
+
 main {
   display: -webkit-box;
   display: -ms-flexbox;
