@@ -7,22 +7,105 @@
     <title>片單</title>
     <link rel="stylesheet" href="./assets/css/style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/c50ac87e11.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
   <body>
-    <header>您已選擇<span id="film_amount"></span>部片</header>
-    <main>
-      <article class="fav__title">
-        <h1>我的片單 .fav__title</h1>
+    <nav id="navbar">
+      <article class="navbar__container">
+        <a href="#" class="navbar__logo" title="回到首頁">
+          <img
+            src="./assets/image/logo-04-04 3.png"
+            alt="logo"
+            id="navbar__logoPic"
+          />
+          <img
+            src="./assets/image/金馬奇幻影展混色 1.png"
+            alt="logo"
+            id="navbar__logoText"
+          />
+        </a>
+        <ul class="navbar__link">
+          <li onclick="dropDown(this)">
+            <a href="#"
+              ><p>訊息公告 <i class="fas fa-angle-down"></i></p>
+            </a>
+            <div class="menu__container" style="display: none">
+              <a class="menu"> 最新消息 </a>
+              <a class="menu"> 影展公告 </a>
+            </div>
+          </li>
+          <li>
+            <a href="#"><p>關於影展</p> </a>
+          </li>
+          <li onclick="dropDown(this)">
+            <a href="#"
+              ><p>節目介紹 <i class="fas fa-angle-down"></i></p>
+            </a>
+            <div class="menu__container" style="display: none">
+              <a class="menu"> 影片清單 </a>
+              <a class="menu" href="#"> 場次表 </a>
+            </div>
+          </li>
+          <li>
+            <a href="#" title="售票資訊"><p>售票資訊</p> </a>
+          </li>
+          <li>
+            <a
+              href="https://tghff.tixcraft.com/activity"
+              target="_blank"
+              title="金馬購票專區 (另開視窗)"
+              id="buyTicket"
+              ><p>立即購票<i class="fa-solid fa-angles-down"></i></p>
+            </a>
+          </li>
+          <li>
+            <div class="nav__button">
+              <a href="/myFavoriteFilm/" title="我的片單">
+                <img
+                  src="./assets/image/ticket 黑 2.svg"
+                  alt="ticket"
+                  width="20"
+                />
+                <div class="nav__button__number__container">
+                  <span class="nav__button__number" id="film_amount"></span>
+                </div>
+              </a>
+              <div class="nav__button__line"></div>
+              <div class="nav__button__search">
+                <input
+                  class="nav__button__searchBar"
+                  type="text"
+                  style="display: none"
+                  placeholder="功能開發中"
+                />
+                <i class="fas fa-search"></i>
+              </div>
+            </div>
+          </li>
+        </ul>
       </article>
-      <nav class="nav">
-        .nav
+    </nav>
+    <header>
+      <div class="title__container">
+        <h1>我的片單</h1>
+      </div>
+    </header>
+    <main>
+      <article class="nav">
         <div id="8-12">《前五天《</div>
         <div id="13-17">》後五天》</div>
-      </nav>
+      </article>
       <article class="favTable__wrapper">
         <div class="favTableSlide__container">
           <section class="favTable__container" id="favTable__container1">
-            .favTable__container #favTable__container1 ↓ .favTable
             <table class="favTable" id="favTable1">
               <tr>
                 <td class="favTable__header favTable__time">時間</td>
@@ -276,7 +359,7 @@
         </div>
       </article>
     </main>
-    <script src="./assets/js/film_v2.js"></script>
+    <script src="./assets/js/filmTimeline_v4.js"></script>
     <script src="./assets/js/script.js"></script>
   </body>
 </html>

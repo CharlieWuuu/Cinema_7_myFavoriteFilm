@@ -15,16 +15,13 @@ const favArrayData = [];
 
 // 函式：取得最愛的資料
 function getFavFilmData() {
-  // 迴圈：逐一取出fid或full_id準備檢查
+  // 迴圈：逐一取出full_id準備檢查
   for (i = 0; i < localData.length; i++) {
     // 迴圈：進入片單原始資料逐一檢查
-    for (x = 0; x < testFilmData.list.length; x++) {
-      // 判斷：若片單原始資料包fid或full_id，將此筆原始片單資料放入陣列favArrayData中
-      if (
-        testFilmData.list[x].fid == localData[i].fid ||
-        testFilmData.list[x].full_id == localData[i].full_id
-      ) {
-        favArrayData.splice(0, 0, testFilmData.list[x]);
+    for (x = 0; x < filmData.list.length; x++) {
+      // 判斷：若片單原始資料包full_id，將此筆原始片單資料放入陣列favArrayData中
+      if (filmData.list[x].full_id == localData[i].full_id) {
+        favArrayData.splice(0, 0, filmData.list[x]);
       }
     }
   }

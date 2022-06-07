@@ -1,0 +1,37 @@
+header{
+	height: 10vh;
+
+	.title__container{
+	margin: 20vh 15vw;
+	font-weight: 700;
+	font-size: 10rem;
+	color:$color_secondary_golden;
+
+		h1{
+			font-weight: 400;
+			font-size: 56px;
+			line-height: 77px;
+		}
+		.ZHtitle__contaitner{
+			@extend %flex-center;
+			justify-content: flex-start;
+			h2{
+				position: relative;
+				top: -70px;
+				width: 30px;
+				font-size: 30px;
+				line-height: 40px;
+				margin:0 16px;
+				color: $color_secondary_white;
+				font-weight: 500;
+			}
+			.ZHtitle__line{
+				position: relative;
+				top: -70px;
+				width: 3px;
+				height: 190px;
+				background-color: $color_main;
+			}
+		}
+	}
+}
