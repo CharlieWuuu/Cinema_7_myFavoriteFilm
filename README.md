@@ -1,1 +1,1 @@
- https://charliewuuu.github.io/myFavoriteFilm/
+https://charliewuuu.github.io/Cinema_7_myFavoriteFilm/
