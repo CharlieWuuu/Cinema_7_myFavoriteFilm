@@ -87,8 +87,6 @@ video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
-  -webkit-box-shadow: inset 0 0 0 0.7px black;
-          box-shadow: inset 0 0 0 0.7px black;
 }
 
 /* 賦予 HTML5 標籤基本的 Display:block ，用於輔助舊的瀏覽器能正常顯示 */
@@ -167,53 +165,10 @@ body {
   z-index: -10;
 }
 
-.background__tail {
-  position: relative;
+.background__line img {
+  width: 100vw;
   height: 100vh;
-  overflow: hidden;
-}
-
-.background__tail img {
-  position: absolute;
-  width: 80vh;
-  top: 10vh;
-  right: -13vw;
-  -webkit-animation: float infinite 3s;
-          animation: float infinite 3s;
-  -webkit-animation-timing-function: ease;
-          animation-timing-function: ease;
-  -webkit-filter: drop-shadow(0px 5px 20px rgba(0, 0, 0, 0.2));
-          filter: drop-shadow(0px 5px 20px rgba(0, 0, 0, 0.2));
-}
-
-@-webkit-keyframes float {
-  0% {
-    -webkit-transform: translateY(-2vh);
-            transform: translateY(-2vh);
-  }
-  50% {
-    -webkit-transform: translateY(2vh);
-            transform: translateY(2vh);
-  }
-  100% {
-    -webkit-transform: translateY(-2vh);
-            transform: translateY(-2vh);
-  }
-}
-
-@keyframes float {
-  0% {
-    -webkit-transform: translateY(-2vh);
-            transform: translateY(-2vh);
-  }
-  50% {
-    -webkit-transform: translateY(2vh);
-            transform: translateY(2vh);
-  }
-  100% {
-    -webkit-transform: translateY(-2vh);
-            transform: translateY(-2vh);
-  }
+  background-size: s;
 }
 
 .navbar__container {
@@ -402,7 +357,7 @@ main {
 }
 
 .favorite__select {
-  width: 95%;
+  width: 85%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -418,11 +373,14 @@ main {
   background-color: #6AB5B9;
   margin: 10px 0;
   color: #FFFFFF;
+  cursor: pointer;
+  border: 0.3px solid #FFFFFF;
 }
 
 .favorite__select #favoriteSelectText {
   width: 90px;
   text-align: center;
+  cursor: auto;
 }
 
 .favTable__wrapper {
@@ -435,7 +393,7 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 95%;
+  width: 90%;
   overflow: hidden;
 }
 
@@ -471,7 +429,7 @@ main {
           flex-direction: column;
   padding: 0px;
   margin: 0px;
-  background-color: #FFFFFF;
+  background-color: #6AB5B9;
 }
 
 .favTable__container#favTable__container1 {
@@ -495,6 +453,8 @@ td {
   text-overflow: ellipsis;
   white-space: nowrap;
   padding: 0;
+  -webkit-box-shadow: inset 0 0 0 0.1px black;
+          box-shadow: inset 0 0 0 0.1px black;
 }
 
 .favTable__header {
@@ -523,7 +483,7 @@ td {
   position: absolute;
   padding: 0px;
   margin: 0px;
-  background-color: rgba(255, 255, 203, 0.801);
+  background-color: #D3D6B1;
   width: 6vw;
   height: 8vh;
   display: -webkit-box;
@@ -541,7 +501,7 @@ td {
   overflow: visible;
 }
 
-.film span, p {
+.film > span, .film > p {
   padding: 2px;
   margin: 2px;
   font-size: 0.5rem;
@@ -584,15 +544,20 @@ td {
   font-weight: 700;
 }
 
+.footer .footer__upside section .footer__title a {
+  text-decoration: none;
+  color: #D3D6B1;
+}
+
 .footer .footer__upside section span {
   margin-bottom: 1rem;
 }
 
-.footer .footer__upside section .footer__contant {
+.footer .footer__upside section .footer__content {
   color: #FFFFFF;
 }
 
-.footer .footer__upside section .footer__contant a {
+.footer .footer__upside section .footer__content a {
   text-decoration: none;
   color: #FFFFFF;
 }

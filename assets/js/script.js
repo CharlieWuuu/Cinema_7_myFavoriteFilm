@@ -1,8 +1,8 @@
 // 目的：渲染有加入最愛的資料
 // 變數：取得本機儲存空間
-const localData = JSON.parse(localStorage.getItem('片單'))
-  ? JSON.parse(localStorage.getItem('片單'))
-  : [];
+// const localData = JSON.parse(localStorage.getItem('片單'))
+//   ? JSON.parse(localStorage.getItem('片單'))
+//   : [];
 
 // 函式：載入時，顯示已選片單數量
 function showFilmAmount() {
@@ -176,7 +176,7 @@ function conflict() {
         }
         const conflictFilm = document.querySelector('#' + favArrayX.full_id);
         if (check == 1) {
-          conflictFilm.style.color = 'red';
+          conflictFilm.style.color = '#EA5136';
         } else if (check == 0) {
           conflictFilm.style.color = 'black';
         }
