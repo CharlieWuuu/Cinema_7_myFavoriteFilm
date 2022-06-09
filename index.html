@@ -35,7 +35,9 @@
         <ul class="navbar__link">
           <li onclick="dropDown(this)">
             <a href="#"
-              ><p>訊息公告 <i class="fas fa-angle-down"></i></p>
+              ><p style="color: red">
+                待更新待更新 <i class="fas fa-angle-down"></i>
+              </p>
             </a>
             <div class="menu__container" style="display: none">
               <a class="menu"> 最新消息 </a>
@@ -93,15 +95,20 @@
         </ul>
       </article>
     </nav>
-    <header>
+    <header class="header">
       <div class="title__container">
-        <h1>我的片單</h1>
+        <h1>My Favorite</h1>
+        <div class="ZHtitle__contaitner">
+          <div class="ZHtitle__line"></div>
+          <h2>我的片單</h2>
+        </div>
       </div>
     </header>
-    <main>
-      <article class="nav">
-        <div id="8-12">《前五天《</div>
-        <div id="13-17">》後五天》</div>
+    <main class="favorite">
+      <article class="favorite__select">
+        <div id="8-12">＜</div>
+        <div id="favoriteSelectText">4/08～12</div>
+        <div id="13-17">＞</div>
       </article>
       <article class="favTable__wrapper">
         <div class="favTableSlide__container">
@@ -242,7 +249,7 @@
                 <td class="favTable__header">4/17</td>
               </tr>
               <tr>
-                <td class="favTable__time" class="favTable__time">10:00</td>
+                <td class="favTable__time">10:00</td>
                 <td></td>
                 <td></td>
                 <td></td>

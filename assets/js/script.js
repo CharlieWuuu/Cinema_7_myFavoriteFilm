@@ -60,7 +60,7 @@ function renderFilm() {
       .replace('{{cinema}}', favArrayI.cinema);
     if (favArrayI.d_num < 5) {
       const varDay8 = favArrayI.d_num;
-      const xaxis = 3 + varDay8 * 12 + varCinema * 2;
+      const xaxis = 6.5 + varDay8 * 16 + varCinema * 3;
       const current_testFilmHTML1 = current_testFilmHTML.replace(
         '{{xaxis}}',
         xaxis,
@@ -68,7 +68,7 @@ function renderFilm() {
       $('#film__container1').append(current_testFilmHTML1);
     } else {
       const varDay13 = favArrayI.d_num - 5;
-      const xaxis = 3 + varDay13 * 12 + varCinema * 2;
+      const xaxis = 6.5 + varDay13 * 16 + varCinema * 3;
       const current_testFilmHTML2 = current_testFilmHTML.replace(
         '{{xaxis}}',
         xaxis,
@@ -88,21 +88,101 @@ const favTableSlideContainerHTML = document.querySelector(
 
 // 函式：隱藏除 id=introduction 以外的區塊
 function wrapper() {
-  $('.nav>#13-17').click(function () {
-    favTableSlideContainerHTML.style.transform = 'translateX(-35vw)';
+  $('.favorite__select>#13-17').click(function () {
+    favTableSlideContainerHTML.style.transform = 'translateX(-45vw)';
+    document.querySelector('#favoriteSelectText').innerText = '4/13～17';
   });
 
-  $('.nav>#8-12').click(function () {
-    favTableSlideContainerHTML.style.transform = 'translateX(35vw)';
+  $('.favorite__select>#8-12').click(function () {
+    favTableSlideContainerHTML.style.transform = 'translateX(45vw)';
+    document.querySelector('#favoriteSelectText').innerText = '4/08～12';
   });
 }
 
 wrapper();
 
-// 目的：刪除按到的片單
-// 先選取片單
+// const currentFData = favArrayData;
+// 刪除按到的片單
+function remove(selectedFilm) {
+  selectedFilm.remove(selectedFilm);
+  // 刪除localStorage
+  for (i = 0; i < localData.length; i++) {
+    if (selectedFilm.id == localData[i].full_id) {
+      current_i = i;
+      localData.splice(current_i, 1);
+      localStorage.setItem('片單', JSON.stringify(localData));
+    }
+  }
+  // 刪除favArrayData
 
-function remove(id) {
-  console.log(id);
-  id.remove(id);
+  for (x = 0; x < favArrayData.length; x++) {
+    if (selectedFilm.id == favArrayData[x].full_id) {
+      current_x = x;
+      favArrayData.splice(current_x, 1);
+    }
+  }
+  showFilmAmount();
+  conflict();
 }
+
+// 衝堂功能
+function conflict() {
+  let check = '';
+  // 依序取出各天資料;
+  dateData = [
+    'D17',
+    'D16',
+    'D15',
+    'D14',
+    'D13',
+    'D12',
+    'D11',
+    'D10',
+    'D09',
+    'D08',
+  ];
+
+  for (d = 0; d < dateData.length; d++) {
+    const todayData = dateData[d];
+    for (x = 0; x < favArrayData.length; x++) {
+      // 選出要進行比對的資料;
+      const favArrayX = favArrayData[x];
+      if (favArrayX.did !== todayData) {
+        // 不是這天的資料;
+      } else if (favArrayX.did == todayData) {
+        const x1 = parseFloat(favArrayX.left);
+        const x2 = parseFloat(favArrayX.left) + parseFloat(favArrayX.long);
+        for (y = 0; y < favArrayData.length; y++) {
+          // 比較當天所有的資料;
+          const favArrayY = favArrayData[y];
+          if (favArrayY.did !== todayData) {
+            // 不是這天的資料;
+          } else if (favArrayX.full_id == favArrayY.full_id) {
+            // favArrayX.name + '與' + favArrayY.name + '不衝突';
+            check = 0;
+          } else if (favArrayY.did == todayData) {
+            y1 = parseFloat(favArrayY.left);
+            y2 = parseFloat(favArrayY.left) + parseFloat(favArrayY.long);
+            // 如果X的範圍比Y都小或大，代表不衝突；除此之外的狀況顯示為衝堂
+            if ((x1 <= y1 && x2 <= y1) || (x1 >= y2 && x2 >= y2)) {
+              // favArrayX.name + '與' + favArrayY.name + '不衝突';
+              check = 0;
+            } else {
+              // favArrayX.name + '與' + favArrayY.name + '衝突';
+              check = 1;
+              break;
+            }
+          }
+        }
+        const conflictFilm = document.querySelector('#' + favArrayX.full_id);
+        if (check == 1) {
+          conflictFilm.style.color = 'red';
+        } else if (check == 0) {
+          conflictFilm.style.color = 'black';
+        }
+      }
+    }
+  }
+}
+
+conflict();

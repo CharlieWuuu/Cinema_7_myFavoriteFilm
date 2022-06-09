@@ -1,8 +1,6 @@
 header{
-	height: 10vh;
-
 	.title__container{
-	margin: 20vh 15vw;
+	margin: 145px 6vw 0vh 6vw;
 	font-weight: 700;
 	font-size: 10rem;
 	color:$color_secondary_golden;
@@ -15,10 +13,10 @@ header{
 		.ZHtitle__contaitner{
 			@extend %flex-center;
 			justify-content: flex-start;
+			margin-left: 140px;
 			h2{
 				position: relative;
-				top: -70px;
-				width: 30px;
+				top: 0px;
 				font-size: 30px;
 				line-height: 40px;
 				margin:0 16px;
@@ -27,9 +25,9 @@ header{
 			}
 			.ZHtitle__line{
 				position: relative;
-				top: -70px;
+				top: 0px;
 				width: 3px;
-				height: 190px;
+				height: 30px;
 				background-color: $color_main;
 			}
 		}
