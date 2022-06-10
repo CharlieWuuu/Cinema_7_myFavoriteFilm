@@ -33,10 +33,12 @@ getFavFilmData();
 const testFilmHTML = `
 <div class="film" id="{{full_id}}"
 style="transform: translate({{xaxis}}vw, {{yaxis}}vh); height: {{height}}vh">
-	<span class="film__time">{{startTime}}-{{endTime}}</span>
-	<p class="film__name">{{name}}</p>
-	<span>{{cinema}}</span>
-	<span onclick="remove(this.parentNode)">x</span>
+  <div class="film__content__container">
+    <p class="film__name">{{name}}</p>
+    <span class="film__time">{{startTime}}-{{endTime}}</span>
+    <span class="film__cinema__name">{{cinema}}</span>
+    <span class="film__delete" onclick="remove(this.parentNode.parentNode)" title="刪除影片">x</span>
+  </div>
 </div>
 `;
 
@@ -88,12 +90,12 @@ const favTableSlideContainerHTML = document.querySelector(
 
 // 函式：隱藏除 id=introduction 以外的區塊
 function wrapper() {
-  $('.favorite__select>#13-17').click(function () {
+  $('.favorite__select__button>#13-17').click(function () {
     favTableSlideContainerHTML.style.transform = 'translateX(-45vw)';
     document.querySelector('#favoriteSelectText').innerText = '4/13～17';
   });
 
-  $('.favorite__select>#8-12').click(function () {
+  $('.favorite__select__button>#8-12').click(function () {
     favTableSlideContainerHTML.style.transform = 'translateX(45vw)';
     document.querySelector('#favoriteSelectText').innerText = '4/08～12';
   });
@@ -114,13 +116,15 @@ function remove(selectedFilm) {
     }
   }
   // 刪除favArrayData
-
   for (x = 0; x < favArrayData.length; x++) {
     if (selectedFilm.id == favArrayData[x].full_id) {
       current_x = x;
       favArrayData.splice(current_x, 1);
     }
   }
+  // 刪除sessionStorage
+  sessionData.splice(0, 1);
+  sessionStorage.setItem('filmHeight', JSON.stringify(sessionData));
   showFilmAmount();
   conflict();
 }
@@ -176,9 +180,9 @@ function conflict() {
         }
         const conflictFilm = document.querySelector('#' + favArrayX.full_id);
         if (check == 1) {
-          conflictFilm.style.color = '#EA5136';
+          conflictFilm.style.boxShadow = '0 0 3px 1px rgb(234, 81, 54)';
         } else if (check == 0) {
-          conflictFilm.style.color = 'black';
+          conflictFilm.style.boxShadow = '0 0 5px 0 rgb(0, 0, 0)';
         }
       }
     }
@@ -186,3 +190,31 @@ function conflict() {
 }
 
 conflict();
+
+// hover後顯示完整片單內容
+const sessionData = JSON.parse(sessionStorage.getItem('片單'))
+  ? JSON.parse(sessionStorage.getItem('片單'))
+  : [];
+
+$('.film').hover(
+  function () {
+    const thisHeight = $(this).css('height');
+    $(this).css('height', 'auto'); // 高度偷偷變auto
+    const currentHeight = $(this).css('height');
+    $(this).css('height', thisHeight); // 高度偷偷變回來
+
+    if (parseFloat(thisHeight) > parseFloat(currentHeight)) {
+      sessionData.push({ this_height: thisHeight });
+      sessionStorage.setItem('filmHeight', JSON.stringify(sessionData));
+    } else {
+      sessionData.push({ this_height: thisHeight });
+      sessionStorage.setItem('filmHeight', JSON.stringify(sessionData));
+      $(this).css('height', 'auto');
+    }
+  },
+  function () {
+    $(this).css('height', sessionData[0].this_height);
+    sessionData.splice(0, 1);
+    sessionStorage.setItem('filmHeight', JSON.stringify(sessionData));
+  },
+);
