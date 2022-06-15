@@ -1,20 +1,13 @@
-// 目的：渲染有加入最愛的資料
-// 變數：取得本機儲存空間
-// const localData = JSON.parse(localStorage.getItem('片單'))
-//   ? JSON.parse(localStorage.getItem('片單'))
-//   : [];
+// (1) 在表格中渲染最愛片單的資料
 
-// 函式：載入時，顯示已選片單數量
-function showFilmAmount() {
-  document.getElementById('film_amount').innerText = localData.length;
-}
-showFilmAmount();
-
+// 1-1 載入時取得最愛片單資料
 // 變數：最終渲染用的陣列資料
 const favArrayData = [];
 
-// 函式：取得最愛的資料
 function getFavFilmData() {
+  const localData = JSON.parse(localStorage.getItem('片單'))
+    ? JSON.parse(localStorage.getItem('片單'))
+    : [];
   // 迴圈：逐一取出full_id準備檢查
   for (i = 0; i < localData.length; i++) {
     // 迴圈：進入片單原始資料逐一檢查
@@ -29,7 +22,7 @@ function getFavFilmData() {
 
 getFavFilmData();
 
-// 目的：顯示最愛片單
+// 1-2 在表格中渲染最愛片單的資料
 const testFilmHTML = `
 <div class="film" id="{{full_id}}"
 style="transform: translate({{xaxis}}vw, {{yaxis}}vh); height: {{height}}vh">
@@ -82,7 +75,7 @@ function renderFilm() {
 
 renderFilm();
 
-// 目的：切換時間表
+// (3) 切換時間表
 // 變數：滑動時間表的HTML
 const favTableSlideContainerHTML = document.querySelector(
   '.favTableSlide__container',
@@ -103,8 +96,7 @@ function wrapper() {
 
 wrapper();
 
-// const currentFData = favArrayData;
-// 刪除按到的片單
+// (4) 刪除按到的片單
 function remove(selectedFilm) {
   selectedFilm.remove(selectedFilm);
   // 刪除localStorage
@@ -129,7 +121,7 @@ function remove(selectedFilm) {
   conflict();
 }
 
-// 衝堂功能
+// (5) 顯示衝堂
 function conflict() {
   let check = '';
   // 依序取出各天資料;
@@ -191,7 +183,7 @@ function conflict() {
 
 conflict();
 
-// hover後顯示完整片單內容
+// (6) hover後顯示完整片單內容
 const sessionData = JSON.parse(sessionStorage.getItem('片單'))
   ? JSON.parse(sessionStorage.getItem('片單'))
   : [];
